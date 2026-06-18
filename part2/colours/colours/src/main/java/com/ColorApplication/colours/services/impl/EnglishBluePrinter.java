@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 public class EnglishBluePrinter implements BluePrinter {
   @Override
   public String print() {
-    return "Blue (with Component annotation)";
+    return "Blue (with @Component)";
   }
 }
