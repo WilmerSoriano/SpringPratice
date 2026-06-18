@@ -20,7 +20,10 @@ public class ColoursApplication implements CommandLineRunner {
   }
 
   @Override
-  public void run(final String... args) {
+  public void run(
+      final String...
+          args) { // Note1: This won't change... in terms of main job of running the display
+    // application. More on this later.
     final ColourPrinter ColourPrinter = new ColourPrinterImpl();
     log.info(colourPrinter.print());
   }
