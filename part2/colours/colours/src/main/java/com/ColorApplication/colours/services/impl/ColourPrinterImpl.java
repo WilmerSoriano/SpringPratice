@@ -4,7 +4,9 @@ import com.ColorApplication.colours.services.BluePrinter;
 import com.ColorApplication.colours.services.ColourPrinter;
 import com.ColorApplication.colours.services.GreenPrinter;
 import com.ColorApplication.colours.services.RedPrinter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ColourPrinterImpl implements ColourPrinter {
   private RedPrinter redPrinter;
   private BluePrinter bluePrinter;
@@ -18,7 +20,7 @@ public class ColourPrinterImpl implements ColourPrinter {
     this.greenPrinter = new EnglishGreenPrinter();
   }
 
-  @Overrride
+  @Override
   public String print() {
     return String.join(",", redPrinter.print(), bluePrinter.print(), greenPrinter.print());
   }

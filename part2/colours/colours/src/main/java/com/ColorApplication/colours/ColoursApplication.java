@@ -1,5 +1,7 @@
 package com.ColorApplication.colours;
 
+import com.ColorApplication.colours.services.ColourPrinter;
+import com.ColorApplication.colours.services.impl.ColourPrinterImpl;
 import lombok.extern.java.Log;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +26,7 @@ public class ColoursApplication implements CommandLineRunner {
       final String...
           args) { // Note1: This won't change... in terms of main job of running the display
     // application. More on this later.
-    final ColourPrinter ColourPrinter = new ColourPrinterImpl();
+    final ColourPrinter colourPrinter = new ColourPrinterImpl();
     log.info(colourPrinter.print());
   }
 }
