@@ -5,7 +5,6 @@ import com.ColorApplication.colours.services.ColourPrinter;
 import com.ColorApplication.colours.services.GreenPrinter;
 import com.ColorApplication.colours.services.RedPrinter;
 import com.ColorApplication.colours.services.impl.ColourPrinterImpl;
-import com.ColorApplication.colours.services.impl.EnglishBluePrinter;
 import com.ColorApplication.colours.services.impl.EnglishGreenPrinter;
 import com.ColorApplication.colours.services.impl.SpanishRedPrinter;
 import org.springframework.context.annotation.Bean;
@@ -16,11 +15,7 @@ import org.springframework.context.annotation.Configuration;
 */
 @Configuration
 public class PrinterConfig {
-  @Bean
-  public BluePrinter bluePrinter() {
-    return new EnglishBluePrinter();
-  }
-
+  // I Deleted Blue to show how Componet works!
   @Bean
   public RedPrinter
       redPrinter() { // Congrats now it's Lose couped, Since we implemented everything lossely, the

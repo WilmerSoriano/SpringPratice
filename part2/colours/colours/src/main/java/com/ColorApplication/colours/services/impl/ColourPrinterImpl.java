@@ -6,7 +6,8 @@ import com.ColorApplication.colours.services.GreenPrinter;
 import com.ColorApplication.colours.services.RedPrinter;
 import org.springframework.stereotype.Component;
 
-@Component
+// Adding Component annotation is 2nd way of injecting beans!
+@Component // "Spring I am a bean! and any dependency require I want to be injected"
 public class ColourPrinterImpl implements ColourPrinter {
   private RedPrinter redPrinter;
   private BluePrinter bluePrinter;
