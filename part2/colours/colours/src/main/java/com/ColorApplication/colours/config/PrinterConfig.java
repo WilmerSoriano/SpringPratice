@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /*
-    Now SpringBoot will manage the new instances of English color
+    Now SpringBoot will manage the new instances of English color, Spanish, or even french color
 */
 @Configuration
 public class PrinterConfig {
@@ -22,9 +22,12 @@ public class PrinterConfig {
   }
 
   @Bean
-  public RedPrinter redPrinter() {
-    return new SpanishRedPrinter();
-  }
+  public RedPrinter
+      redPrinter() { // Congrats now it's Lose couped, Since we implemented everything lossely, the
+    // only changes made
+    return new SpanishRedPrinter(); // is going to be here in the beans injection and every time we
+    // add a language we just
+  } // use an interface
 
   @Bean
   public GreenPrinter greenPrinter() {
