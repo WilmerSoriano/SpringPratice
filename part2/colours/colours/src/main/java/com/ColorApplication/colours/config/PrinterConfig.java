@@ -5,7 +5,6 @@ import com.ColorApplication.colours.services.ColourPrinter;
 import com.ColorApplication.colours.services.GreenPrinter;
 import com.ColorApplication.colours.services.RedPrinter;
 import com.ColorApplication.colours.services.impl.ColourPrinterImpl;
-import com.ColorApplication.colours.services.impl.EnglishGreenPrinter;
 import com.ColorApplication.colours.services.impl.SpanishRedPrinter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 */
 @Configuration
 public class PrinterConfig {
-  // I Deleted Blue to show how Componet works!
+  // I Deleted Blue to show how @Componet works!
   @Bean
   public RedPrinter
       redPrinter() { // Congrats now it's Lose couped, Since we implemented everything lossely, the
@@ -24,10 +23,7 @@ public class PrinterConfig {
     // add a language we just
   } // use an interface
 
-  @Bean
-  public GreenPrinter greenPrinter() {
-    return new EnglishGreenPrinter();
-  }
+  // I deleted Green to show how @Service works!
 
   /*
     Now when we start our application runs, when Spring needs BluePrinter, redPrinter, and greenPrinter
