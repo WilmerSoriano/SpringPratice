@@ -7,7 +7,7 @@ import com.ColorApplication.colours.services.RedPrinter;
 import com.ColorApplication.colours.services.impl.ColourPrinterImpl;
 import com.ColorApplication.colours.services.impl.EnglishBluePrinter;
 import com.ColorApplication.colours.services.impl.EnglishGreenPrinter;
-import com.ColorApplication.colours.services.impl.EnglishRedPrinter;
+import com.ColorApplication.colours.services.impl.SpanishRedPrinter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,7 +23,7 @@ public class PrinterConfig {
 
   @Bean
   public RedPrinter redPrinter() {
-    return new EnglishRedPrinter();
+    return new SpanishRedPrinter();
   }
 
   @Bean
