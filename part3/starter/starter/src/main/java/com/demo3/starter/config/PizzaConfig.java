@@ -1,10 +1,9 @@
 package com.demo3.starter.config;
 
-import org.springframework.context.annotation.Configuration;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Configuration;
 
 // For all purposes you don't need to understand the annotation properties, we are using lombok
 // library to make data class
