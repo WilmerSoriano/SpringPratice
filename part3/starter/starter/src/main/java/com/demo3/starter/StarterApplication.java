@@ -15,7 +15,9 @@ public class StarterApplication implements CommandLineRunner {
   private PizzaConfig pizzaConfig;
 
   public StarterApplication(
-      PizzaConfig pizzaConfig) { // But we need a bean to inject this... time to add config
+      PizzaConfig
+          pizzaConfig) { // But we need a bean to inject pizzaConfig... so will use environment
+    // variable or aka config properties... time to go to PizzaConfig file
     this.pizzaConfig = pizzaConfig;
   }
 
