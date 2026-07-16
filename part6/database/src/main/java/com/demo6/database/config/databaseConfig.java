@@ -11,9 +11,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
     Since JDBC already handles connection, templet allowes us to create
     specefic query that are used reptative with Java.
     While JPA already handles simple java Query, this templet format 
-    gives us coder more flexiblity in what we want a complex query 
+    gives us coder more flexiblity in what we want as a complex query 
     in quick code.
 */
+
+
+/*
+The section below is simplie a jdbc template bean so it can be injected
+and reused throughout our application
+*/
+
 @Configuration
 public class databaseConfig {
 
