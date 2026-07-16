@@ -1,4 +1,10 @@
+package com.demo6.database.config;
+
 import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 /*
     This is how we are going to interact with SQL.
     Why do we need a templet?
@@ -12,7 +18,7 @@ import javax.sql.DataSource;
 public class databaseConfig {
 
     @Bean
-    public JdbcTemplet jdbcTemplate(final DataSource dataSource){
-        return new JdbcTemplate(dataSource)
+    public JdbcTemplate jdbcTemplate(final DataSource dataSource){
+        return new JdbcTemplate(dataSource);
     }
 }
