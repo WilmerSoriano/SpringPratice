@@ -3,11 +3,22 @@ package com.demo6.database.dao.impl;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.demo6.database.dao.BookDao;
+import com.demo6.database.domain.Book;
 
 public class BookDoaImpl implements BookDao{
     private final JdbcTemplate jdbcTemplate;
 
-    public BookDaoImpl(final JdbcTemplate jdbcTemplate){
+    public BookDoaImpl(final JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public void create(Book book){
+        jdbcTemplate.update(
+            "INSERT INTO books (isbn, title, author_id) VALUES (?, ?, ?)",
+            book.getIsbn(),
+            book.getTitle(),
+            book.getAuthorId()
+        );
     }
 }
