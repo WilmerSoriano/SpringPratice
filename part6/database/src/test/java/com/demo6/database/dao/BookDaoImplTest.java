@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.demo6.database.dao.impl.BookDaoImpl;
 import com.demo6.database.domain.Book;
 
 @ExtendWith(MockitoExtension.class)
