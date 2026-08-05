@@ -5,10 +5,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.demo6.database.dao.BookDao;
 import com.demo6.database.domain.Book;
 
-public class BookDoaImpl implements BookDao{
+public class BookDaoImpl implements BookDao{
     private final JdbcTemplate jdbcTemplate;
 
-    public BookDoaImpl(final JdbcTemplate jdbcTemplate){
+    public BookDaoImpl(final JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
 
