@@ -1,15 +1,18 @@
 package com.demo6.database.dao.impl;
 
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.demo6.database.dao.impl.BookDaoImpl;
+import com.demo6.database.dao.impl.BookDaoImpl.BoookRowMapper;
 import com.demo6.database.domain.Book;
 
 @ExtendWith(MockitoExtension.class)
@@ -35,7 +38,14 @@ public class BookDaoImplTest {
         );
     }
 
-
-
+    @Test
+    public void testThatFindOneBookGenerateCorrectSql(){
+        underTest.find("bn23j4k");
+        verify(jdbcTemplate).query(
+            eq("SELECT isbn, title, author_id FROM books WHERE isbn = ? LIMIT 1"),
+            ArgumentMatchers.<BookDaoImpl.BoookRowMapper>any(), 
+            eq("bn23j4k")
+        );
+    }
     
 }
