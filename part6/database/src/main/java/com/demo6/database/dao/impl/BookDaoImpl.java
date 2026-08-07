@@ -2,12 +2,15 @@ package com.demo6.database.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.demo6.database.dao.BookDao;
+import com.demo6.database.dao.impl.AuthorDaoImpl.AuthorRowMapper;
+import com.demo6.database.domain.Author;
 import com.demo6.database.domain.Book;
 
 public class BookDaoImpl implements BookDao{
@@ -29,10 +32,14 @@ public class BookDaoImpl implements BookDao{
 
     @Override
     public Optional<Book> find(String isbn){
-        return Optional.empty();
+        List<Book> results = jdbcTemplate.query(
+            "SELECT isbn, title, author_id FROM books WHERE isbn = ? LIMIT 1",
+            new BookRowMapper(), isbn);
+
+        return results.stream().findFirst();
     }
 
-    public static class BoookRowMapper implements RowMapper<Book>{
+    public static class BookRowMapper implements RowMapper<Book>{
         @Override
         public Book mapRow(ResultSet rs, int rowNum) throws SQLException{
             return Book.builder()

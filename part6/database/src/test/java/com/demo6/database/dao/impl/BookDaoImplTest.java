@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.demo6.database.dao.impl.BookDaoImpl;
-import com.demo6.database.dao.impl.BookDaoImpl.BoookRowMapper;
+import com.demo6.database.dao.impl.BookDaoImpl.BookRowMapper;
 import com.demo6.database.domain.Book;
 
 @ExtendWith(MockitoExtension.class)
@@ -43,7 +43,7 @@ public class BookDaoImplTest {
         underTest.find("bn23j4k");
         verify(jdbcTemplate).query(
             eq("SELECT isbn, title, author_id FROM books WHERE isbn = ? LIMIT 1"),
-            ArgumentMatchers.<BookDaoImpl.BoookRowMapper>any(), 
+            ArgumentMatchers.<BookDaoImpl.BookRowMapper>any(), 
             eq("bn23j4k")
         );
     }
