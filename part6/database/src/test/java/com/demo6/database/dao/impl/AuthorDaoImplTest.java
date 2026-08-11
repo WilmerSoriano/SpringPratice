@@ -29,13 +29,17 @@ public class AuthorDaoImplTest {
     @Test
     public void testThatCreateAuthorGeneratesCorrectSql(){
         
-        Author author = Author.builder().id(1L).name("Abigail Rosde").age(80).build();
+        Author author = createTestAuthor();
 
         underTest.create(author);
         verify(jdbcTemplate).update(
             eq("INSERT INTO authors (id, name, age) VALUES (?,?,?)"),
             eq(1L), eq("Abigail Rosde"), eq(80)
         );
+    }
+
+    private Author createTestAuthor() {
+        return Author.builder().id(1L).name("Abigail Rosde").age(80).build();
     }
 
     @Test
