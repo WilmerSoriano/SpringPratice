@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional; // return empty instead of NUll
 
 import org.springframework.jdbc.core.RowMapper; // This library helps convert Database row into java object
-
+import org.springframework.stereotype.Component;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.demo6.database.dao.AuthorDao;
@@ -19,7 +19,7 @@ import com.demo6.database.domain.Author;
     We can change it to other database such as Mongo,Postgres, etc..
     Everything else in our code would stay the same, except for this code.
 */
-
+@Component
 public class AuthorDaoImpl implements AuthorDao{
     private final JdbcTemplate jdbcTemplate;
 
@@ -38,7 +38,7 @@ public class AuthorDaoImpl implements AuthorDao{
     @Override
     public Optional<Author> findOne(long AuthorId){
         List<Author> results = jdbcTemplate.query(
-            "SELECT id, name, age FROM author WHERE id = ? LIMIT 1",
+            "SELECT id, name, age FROM authors WHERE id = ? LIMIT 1",
             new AuthorRowMapper(), AuthorId);
 
         return results.stream().findFirst();
