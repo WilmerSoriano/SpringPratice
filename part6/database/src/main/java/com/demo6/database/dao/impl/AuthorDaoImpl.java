@@ -19,7 +19,9 @@ import com.demo6.database.domain.Author;
     We can change it to other database such as Mongo,Postgres, etc..
     Everything else in our code would stay the same, except for this code.
 */
-@Component
+
+// This code is the translator between Java apps and SQL Database
+@Component // <= Remember: this creates and manages obj of this class by Spring
 public class AuthorDaoImpl implements AuthorDao{
     private final JdbcTemplate jdbcTemplate;
 
@@ -28,7 +30,7 @@ public class AuthorDaoImpl implements AuthorDao{
     }
 
     @Override
-    public void create(Author author){
+    public void create(Author author){// Essentially update this new author object into our SQL database
         jdbcTemplate.update(
             "INSERT INTO authors (id, name, age) VALUES (?,?,?)",
             author.getId(), author.getName(), author.getAge()
@@ -36,7 +38,7 @@ public class AuthorDaoImpl implements AuthorDao{
     }
 
     @Override
-    public Optional<Author> findOne(long AuthorId){
+    public Optional<Author> findOne(long AuthorId){ // Find the Author id,name and age based on the ID we are looking for
         List<Author> results = jdbcTemplate.query(
             "SELECT id, name, age FROM authors WHERE id = ? LIMIT 1",
             new AuthorRowMapper(), AuthorId);
@@ -44,9 +46,9 @@ public class AuthorDaoImpl implements AuthorDao{
         return results.stream().findFirst();
     }
 
-    public static class AuthorRowMapper implements RowMapper<Author>{
+    public static class AuthorRowMapper implements RowMapper<Author>{ // We modify RowMapper to be convert 1 database row into an Author obj
 
-        public Author mapRow(ResultSet rs, int rowNum) throws SQLException{
+        public Author mapRow(ResultSet rs, int rowNum) throws SQLException{ // ResultSet = is the JDBC obj that represents the SQL query result.
             return Author.builder()
                 .id(rs.getLong("id"))
                 .name(rs.getString("name"))

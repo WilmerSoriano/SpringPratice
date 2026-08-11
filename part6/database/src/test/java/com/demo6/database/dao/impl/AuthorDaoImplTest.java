@@ -17,7 +17,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.demo6.database.TestDataUtil;
 import com.demo6.database.dao.impl.AuthorDaoImpl;
 import com.demo6.database.domain.Author;
-// This is testing if my AuthorDoaImpl.java file actually works! But instead of MySQl we are using a Mock version
+/* 
+    This is testing if my AuthorDoaImpl.java methods actually works! 
+    But instead of H2-MySQl we are using a Mock version and No SpringBoot,
+    real database, or JDBC. (Only fake jdbc)
+
+*/
 @ExtendWith(MockitoExtension.class)
 public class AuthorDaoImplTest {
     
@@ -25,22 +30,22 @@ public class AuthorDaoImplTest {
     private JdbcTemplate jdbcTemplate;
 
     @InjectMocks
-    private AuthorDaoImpl underTest;
+    private AuthorDaoImpl underTest; // This method is actually real!
 
     @Test
     public void testThatCreateAuthorGeneratesCorrectSql(){
         
-        Author author = TestDataUtil.createTestAuthor();
+        Author author = TestDataUtil.createTestAuthor(); // Using our sample obj to inject into author
 
-        underTest.create(author);
-        verify(jdbcTemplate).update(
-            eq("INSERT INTO authors (id, name, age) VALUES (?,?,?)"),
-            eq(1L), eq("Abigail Rosde"), eq(80)
+        underTest.create(author); // === Creates the Author using our method
+        verify(jdbcTemplate).update( // === Now check the following
+            eq("INSERT INTO authors (id, name, age) VALUES (?,?,?)"),// 1st, check if our create method call this correct SQL query (e.g update())
+            eq(1L), eq("Abigail Rosde"), eq(80) //2nd, then check eqch result is correct.
         );
     }
 
     @Test
-    public void testThatFindOneGeneratesTheCorrectSql(){
+    public void testThatFindOneGeneratesTheCorrectSql(){ // Repeat like above but with FindOne method
         underTest.findOne(1L);
         verify(jdbcTemplate).query(
             eq("SELECT id, name, age FROM authors WHERE id = ? LIMIT 1"),

@@ -12,9 +12,12 @@ import com.demo6.database.TestDataUtil;
 import com.demo6.database.domain.Author;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+/*
+    Integration test - does my entire DAO actaully work when connected to a Database?
+    In this case will be using H2-MySQL version. (check out application.properties)
+*/
 @SpringBootTest
-@ExtendWith(SpringExtension.class)
+@ExtendWith(SpringExtension.class) // Connects JUnit with Spring Testing systems
 public class AuthorDaoImplIntegrationTests {
 
     private AuthorDaoImpl underTest;
@@ -24,13 +27,14 @@ public class AuthorDaoImplIntegrationTests {
         this.underTest = underTest;
     }
 
+    
     @Test
-    public void testThatAuthorCanBeCreatedAndRecalled(){
+    public void testThatAuthorCanBeCreatedAndRecalled(){ // or "Can I create an Author and then retrieve that same Author?"
         Author author = TestDataUtil.createTestAuthor();
-        underTest.create(author);
-        Optional<Author> result = underTest.findOne(author.getId());
-        assertThat(result).isPresent();
-        assertThat(result.get()).isEqualTo(author);
+        underTest.create(author);// ==== create author
+        Optional<Author> result = underTest.findOne(author.getId()); // === retrieve author
+        assertThat(result).isPresent(); // 1st, check if we actually find the Author
+        assertThat(result.get()).isEqualTo(author); // 2nd, check if Author we retrieved equal to the Author we originally created
     }
     
 }
