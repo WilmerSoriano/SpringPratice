@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.demo6.database.TestDataUtil;
 import com.demo6.database.dao.impl.BookDaoImpl;
 import com.demo6.database.dao.impl.BookDaoImpl.BookRowMapper;
 import com.demo6.database.domain.Book;
@@ -26,7 +27,7 @@ public class BookDaoImplTest {
 
     @Test
     public void testThatCreatBookGeneratesCorrectSql(){
-        Book book = Book.builder().isbn("bn23j4k").title("Me sad").authorId(1L).build();
+        Book book = TestDataUtil.createTestBook();
 
         underTest.create(book);
 
@@ -37,6 +38,7 @@ public class BookDaoImplTest {
             eq(1L)
         );
     }
+
 
     @Test
     public void testThatFindOneBookGenerateCorrectSql(){
