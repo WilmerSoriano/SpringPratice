@@ -1,5 +1,6 @@
 package com.demo6.database.dao.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,21 @@ public class AuthorDaoImplIntegrationTests {
         Optional<Author> result = underTest.findOne(author.getId()); // === retrieve author
         assertThat(result).isPresent(); // 1st, check if we actually find the Author
         assertThat(result.get()).isEqualTo(author); // 2nd, check if Author we retrieved equal to the Author we originally created
+    }
+
+    @Test
+    public void testThatMultipleAuthorsCanBeCreatedAndRecalled(){
+        Author authorA = TestDataUtil.createTestAuthor();
+        underTest.create(authorA);
+        Author authorB = TestDataUtil.createTestAuthorB();
+        underTest.create(authorB);
+        Author authorC = TestDataUtil.createTestAuthorC();
+        underTest.create(authorC);
+
+        List<Author> result = underTest.find();
+        assertThat(result)
+            .hasSize(3)
+            .containsExactly(authorA, authorB, authorC);
     }
     
 }

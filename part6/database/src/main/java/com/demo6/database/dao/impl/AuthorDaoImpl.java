@@ -58,6 +58,6 @@ public class AuthorDaoImpl implements AuthorDao{
     }
 
     public List<Author> find() {
-        return null;
+        return jdbcTemplate.query("SELECT id, name, age FROM authors", new AuthorRowMapper());
     }
 }
