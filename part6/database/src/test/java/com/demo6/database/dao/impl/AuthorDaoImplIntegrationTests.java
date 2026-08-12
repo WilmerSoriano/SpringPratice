@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.demo6.database.TestDataUtil;
@@ -19,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 */
 @SpringBootTest
 @ExtendWith(SpringExtension.class) // Connects JUnit with Spring Testing systems
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD) // **** NOTE **** This helps clear out H2-Database When testing, avoid Duplicate Key/Primary key: error
 public class AuthorDaoImplIntegrationTests {
 
     private AuthorDaoImpl underTest;
