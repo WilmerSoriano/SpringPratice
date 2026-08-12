@@ -21,6 +21,14 @@ public final class TestDataUtil {
     }
     
     public static Book createTestBook() {
-        return Book.builder().isbn("bn23j4k").title("Me sad").authorId(1L).build();
+        return Book.builder().isbn("bn23j4k1").title("Me sad").authorId(1L).build();
+    }
+
+    public static Book createTestBookB() {
+        return Book.builder().isbn("bn23j4k2").title("Why Again").authorId(1L).build();
+    }
+
+    public static Book createTestBookC() {
+        return Book.builder().isbn("bn23j4k3").title("greg").authorId(1L).build();
     }
 }
