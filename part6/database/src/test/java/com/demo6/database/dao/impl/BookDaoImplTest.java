@@ -33,7 +33,7 @@ public class BookDaoImplTest {
 
         verify(jdbcTemplate).update(
             eq("INSERT INTO books (isbn, title, author_id) VALUES (?, ?, ?)"),
-            eq("bn23j4k"),
+            eq("bn23j4k1"),
             eq("Me sad"),
             eq(1L)
         );
@@ -42,11 +42,11 @@ public class BookDaoImplTest {
 
     @Test
     public void testThatFindOneBookGenerateCorrectSql(){
-        underTest.findOne("bn23j4k");
+        underTest.findOne("bn23j4k1");
         verify(jdbcTemplate).query(
             eq("SELECT isbn, title, author_id FROM books WHERE isbn = ? LIMIT 1"),
             ArgumentMatchers.<BookDaoImpl.BookRowMapper>any(), 
-            eq("bn23j4k")
+            eq("bn23j4k1")
         );
     }
 
@@ -54,7 +54,7 @@ public class BookDaoImplTest {
     public void testThatFindGeneratesCorrectSql(){
         underTest.find();
         verify(jdbcTemplate).query(
-            eq("SELECT isbn, title, author_id, FROM books"),
+            eq("SELECT isbn, title, author_id FROM books"),
             ArgumentMatchers.<BookDaoImpl.BookRowMapper>any()
         );
 
