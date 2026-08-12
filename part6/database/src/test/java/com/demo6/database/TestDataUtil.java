@@ -12,6 +12,12 @@ public final class TestDataUtil {
         return Author.builder().id(1L).name("Abigail Rosde").age(80).build();
     }
 
+    public static Author createTestAuthorB() {
+        return Author.builder().id(2L).name("Matt Path").age(1).build();
+    }
+    public static Author createTestAuthorC() {
+        return Author.builder().id(3L).name("Hanse Solo").age(32).build();
+    }
     public static Book createTestBook() {
         return Book.builder().isbn("bn23j4k").title("Me sad").authorId(1L).build();
     }
