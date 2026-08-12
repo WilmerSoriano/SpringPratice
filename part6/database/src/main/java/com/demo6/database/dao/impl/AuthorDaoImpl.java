@@ -56,4 +56,8 @@ public class AuthorDaoImpl implements AuthorDao{
                 .build();
         }
     }
+
+    public List<Author> find() {
+        return null;
+    }
 }

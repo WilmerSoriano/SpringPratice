@@ -1,5 +1,6 @@
 package com.demo6.database.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.demo6.database.domain.Author;
@@ -8,4 +9,6 @@ public interface AuthorDao {
     void create(Author author); // This method create an Author
 
     Optional<Author> findOne(long l); // This method looks for an Author with long ID
+
+    List<Author> find();
 }
