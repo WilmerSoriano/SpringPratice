@@ -64,7 +64,7 @@ public class BookDaoImplTest {
         Book book = TestDataUtil.createTestBook();
         underTest.update("bn23j4k1", book);
         verify(jdbcTemplate).update(
-            "UPDATE books SET isbn = ?, title = ?, author_id=?, WHERE isbn = ?",
+            "UPDATE books SET isbn = ?, title = ?, author_id=? WHERE isbn = ?",
             "bn23j4k1", "Me sad", 1L, "bn23j4k1"
         );
     }
