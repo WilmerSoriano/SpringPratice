@@ -68,4 +68,12 @@ public class BookDaoImplTest {
             "bn23j4k1", "Me sad", 1L, "bn23j4k1"
         );
     }
+
+    @Test
+    public void testThatBookDeleteGeneratesCorrectSql(){
+        underTest.delete("bn23j4k1");
+        verify(jdbcTemplate).update(
+            "DELETE FROM books WHERE isbn = ?", "bn23j4k1"
+        );
+    }
 }
