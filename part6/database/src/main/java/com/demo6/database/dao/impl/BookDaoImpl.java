@@ -10,8 +10,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.demo6.database.dao.BookDao;
-import com.demo6.database.dao.impl.AuthorDaoImpl.AuthorRowMapper;
-import com.demo6.database.domain.Author;
 import com.demo6.database.domain.Book;
 
 @Component

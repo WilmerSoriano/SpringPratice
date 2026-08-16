@@ -3,7 +3,6 @@ package com.demo6.database.dao.impl;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-import org.springframework.jdbc.core.RowMapper;
 
 
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.demo6.database.TestDataUtil;
-import com.demo6.database.dao.impl.AuthorDaoImpl;
 import com.demo6.database.domain.Author;
 /* 
     This is testing if my AuthorDoaImpl.java methods actually works! 
