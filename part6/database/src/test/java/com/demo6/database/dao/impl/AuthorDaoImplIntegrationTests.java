@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.demo6.database.TestDataUtil;
@@ -66,5 +67,12 @@ public class AuthorDaoImplIntegrationTests {
         assertThat(result.get()).isEqualTo(authorA);
 
     }
-    
+    @Test
+    public void testThatAuthorCanBeDeleted(){
+        Author authorA = TestDataUtil.createTestAuthor();
+        underTest.create(authorA);
+        underTest.delete(authorA.getId());
+        Optional<Author> result = underTest.findOne(authorA.getId());
+        assertThat(result).isEmpty();
+    }
 }
