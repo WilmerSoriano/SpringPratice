@@ -65,12 +65,12 @@ public class AuthorRepositoryIntegrationTest {
         assertThat(result.get()).isEqualTo(authorA);
 
     }
-    // @Test
-    // public void testThatAuthorCanBeDeleted(){
-    //     Author authorA = TestDataUtil.createTestAuthor();
-    //     underTest.create(authorA);
-    //     underTest.delete(authorA.getId());
-    //     Optional<Author> result = underTest.findOne(authorA.getId());
-    //     assertThat(result).isEmpty();
-    // }
+    @Test
+    public void testThatAuthorCanBeDeleted(){
+        Author authorA = TestDataUtil.createTestAuthor();
+        underTest.save(authorA);
+        underTest.deleteById(authorA.getId());
+        Optional<Author> result = underTest.findById(authorA.getId());
+        assertThat(result).isEmpty();
+    }
 }
