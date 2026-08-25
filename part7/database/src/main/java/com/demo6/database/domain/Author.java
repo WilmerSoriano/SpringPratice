@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Author {
     
     @Id // The type below is our primary key
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_id_seq")// 1st arg automatically generates the next correct Id sequence, 2nd arg tells JPA/hibernate to use this generator named author_id_seq
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "author_id_seq")// 1st arg automatically generates the next correct Id sequence, 2nd arg tells JPA/hibernate to use this generator named author_id_seq
     private Long id;
 
     private String name;
