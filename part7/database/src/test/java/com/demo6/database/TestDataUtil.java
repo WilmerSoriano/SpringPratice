@@ -13,11 +13,11 @@ public final class TestDataUtil {
     }
 
     public static Author createTestAuthorB() {
-        return Author.builder().id(2L).name("Matt Path").age(22).build();
+        return Author.builder()/*.id(2L)*/.name("Matt Path").age(22).build();
     }
 
     public static Author createTestAuthorC() {
-        return Author.builder().id(3L).name("Hanse Solo").age(32).build();
+        return Author.builder()/*.id(3L)*/.name("Hanse Solo").age(32).build();
     }
     
     public static Book createTestBook(final Author author) {
