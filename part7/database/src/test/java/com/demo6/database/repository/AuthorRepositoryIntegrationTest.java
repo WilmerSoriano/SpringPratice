@@ -1,6 +1,4 @@
 package com.demo6.database.repository;
-
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -56,17 +54,17 @@ public class AuthorRepositoryIntegrationTest {
             .containsExactly(authorA, authorB, authorC);
     }
 
-    // @Test
-    // public void testThatAuthorCanBeUpdated(){
-    //     Author authorA = TestDataUtil.createTestAuthor();
-    //     underTest.create(authorA);
-    //     authorA.setName("UPDATED");
-    //     underTest.update(authorA.getId(), authorA);
-    //     Optional<Author> result = underTest.findOne(authorA.getId());
-    //     assertThat(result).isPresent();
-    //     assertThat(result.get()).isEqualTo(authorA);
+    @Test
+    public void testThatAuthorCanBeUpdated(){
+        Author authorA = TestDataUtil.createTestAuthor();
+        underTest.save(authorA);
+        authorA.setName("UPDATED");
+        underTest.save(authorA);
+        Optional<Author> result = underTest.findById(authorA.getId());
+        assertThat(result).isPresent();
+        assertThat(result.get()).isEqualTo(authorA);
 
-    // }
+    }
     // @Test
     // public void testThatAuthorCanBeDeleted(){
     //     Author authorA = TestDataUtil.createTestAuthor();

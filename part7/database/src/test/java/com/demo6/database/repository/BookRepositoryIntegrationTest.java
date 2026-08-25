@@ -1,6 +1,5 @@
 package com.demo6.database.repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -44,13 +43,13 @@ public class BookRepositoryIntegrationTest {
         Author author = TestDataUtil.createTestAuthor();
 
         Book book = TestDataUtil.createTestBook(author);
-        underTest.save(book);
+        book = underTest.save(book); // This is bullshit btw, I don't know how this is saved but the method above required a variable to save obj.
 
         Book bookB = TestDataUtil.createTestBookB(author);
-        underTest.save(bookB);
+        bookB = underTest.save(bookB);
 
         Book bookC = TestDataUtil.createTestBookC(author);
-        underTest.save(bookC);
+        bookC = underTest.save(bookC);
 
         Iterable<Book> result = underTest.findAll();
         assertThat(result)
@@ -58,22 +57,20 @@ public class BookRepositoryIntegrationTest {
             .containsExactly(book,bookB, bookC);
     }
 
-    // @Test
-    // public void testThatBookCanBeUpdated(){
-    //     Author author = TestDataUtil.createTestAuthor();
-    //     authorDao.create(author);
+    @Test
+    public void testThatBookCanBeUpdated(){
+        Author author = TestDataUtil.createTestAuthor();
 
-    //     Book bookA = TestDataUtil.createTestBook();
-    //     bookA.setAuthorId(author.getId());
-    //     underTest.create(bookA);
+        Book bookA = TestDataUtil.createTestBook(author);
+        underTest.save(bookA);
 
-    //     bookA.setTitle("UPDATED");
-    //     underTest.update(bookA.getIsbn(), bookA);
+        bookA.setTitle("UPDATED");
+        bookA = underTest.save(bookA);
 
-    //     Optional<Book> result = underTest.findOne(bookA.getIsbn());
-    //     assertThat(result).isPresent();
-    //     assertThat(result.get()).isEqualTo(bookA);
-    // }
+        Optional<Book> result = underTest.findById(bookA.getIsbn());
+        assertThat(result).isPresent();
+        assertThat(result.get()).isEqualTo(bookA);
+    }
 
     // @Test
     // public void testThatBookCanBeDeleted(){
