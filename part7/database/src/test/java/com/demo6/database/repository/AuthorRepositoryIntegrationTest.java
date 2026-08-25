@@ -73,4 +73,30 @@ public class AuthorRepositoryIntegrationTest {
         Optional<Author> result = underTest.findById(authorA.getId());
         assertThat(result).isEmpty();
     }
+
+    @Test
+    public void testThatGetAuthorsWithAgeLessThan(){ // For this test we don't provide the logic, spring data JPA does, check out AuthorRepo.java
+        Author testAuthor = TestDataUtil.createTestAuthor();
+        underTest.save(testAuthor);
+        Author testAuthor2 = TestDataUtil.createTestAuthorB();
+        underTest.save(testAuthor2);
+        Author testAuthor3 = TestDataUtil.createTestAuthorC();
+        underTest.save(testAuthor3);
+
+        Iterable<Author> result = underTest.ageLessThan(50);
+        assertThat(result).containsExactly(testAuthor2, testAuthor3);
+    }
+
+    @Test
+    public void testThatGetAuthorsWithAgeGreaterThan(){ // In this case we are purposely trying to make JPA unable to automate a method logic for us.
+        Author testAuthor = TestDataUtil.createTestAuthor(); // We will create a HQL in cases of that
+        underTest.save(testAuthor);
+        Author testAuthor2 = TestDataUtil.createTestAuthorB();
+        underTest.save(testAuthor2);
+        Author testAuthor3 = TestDataUtil.createTestAuthorC();
+        underTest.save(testAuthor3);
+
+        Iterable<Author> result = underTest.findAuthorsWithAgeGreaterThan(50);
+        assertThat(result).containsExactly(testAuthor);
+    }
 }
