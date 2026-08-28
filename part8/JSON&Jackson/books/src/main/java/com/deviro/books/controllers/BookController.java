@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Log
 public class BookController {
-  @GetMapping(path = "/books")
+
+  @GetMapping(path = "/books") // Our Http GET end point
   public Book retrieveBook() {
     return Book.builder()
         .isbn("978-0-13-478627-5")
@@ -20,7 +21,7 @@ public class BookController {
         .build();
   }
 
-  @PostMapping(path = "/books")
+  @PostMapping(path = "/books") // This expect a book obj
   public Book createBook(@RequestBody final Book book) {
     log.info("Got book: " + book.toString());
     return book;
