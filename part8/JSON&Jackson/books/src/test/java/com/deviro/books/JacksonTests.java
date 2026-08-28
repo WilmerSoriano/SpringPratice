@@ -27,6 +27,36 @@ public class JacksonTests {
             "{\"isbn\":\"978-0-13-478627-5\","
                 + "\"title\":\"The Enigma of Eternity\","
                 + "\"author\":\"Aria Montgomery\","
-                + "\"yearPublished\":\"2005\"}");
+                + "\"year\":\"2005\"}"); // Notice: yearPublished has been change to match what JSON
+    // from book.java was map to.
+  }
+
+  @Test
+  public void
+      testThatObjectMapperCanCreateJavaObjectFromJsonObject() { // Now doing reverse Jackson => Java
+    // book Obj
+
+    Book book =
+        Book.builder() // used as a test, ignore this class
+            .isbn("978-0-13-478627-5")
+            .title("The Enigma of Eternity")
+            .author("Aria Montgomery")
+            .yearPublished("2005")
+            .build();
+
+    String json = // we are converting jackson to java object
+        "{\"isbn\":\"978-0-13-478627-5\","
+            + "\"title\":\"The Enigma of Eternity\","
+            + "\"author\":\"Aria Montgomery\","
+            + "\"year\":\"2005\"}";
+
+    final ObjectMapper objectMapper = new ObjectMapper();
+
+    Book result =
+        objectMapper.readValue(
+            json,
+            Book.class); // In this method, 1st parameter needs the jackson we have, 2nd parameter
+    // we need the class we want this jackson to convert to
+    assertThat(result).isEqualTo(book);
   }
 }
