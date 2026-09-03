@@ -36,7 +36,7 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.modelmapper</groupId>
+			<groupId>org.modelmapper</groupId> <!--This library help us convert DTO to Entity class-->
 			<artifactId>modelmapper</artifactId>
 			<version>3.0.0</version>
 		</dependency>

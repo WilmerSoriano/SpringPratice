@@ -13,15 +13,15 @@ import java.util.stream.StreamSupport;
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
-    private AuthorRepository authorRepository;
+    private AuthorRepository authorRepository; // Remember Service and Presentation are communcating as needed
 
     public AuthorServiceImpl(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
     }
 
     @Override
-    public AuthorEntity save(AuthorEntity authorEntity) {
-        return authorRepository.save(authorEntity);
+    public AuthorEntity save(AuthorEntity authorEntity) {// notice we no longer use DTO. The transfer has been made so our service can start communbicating with persistence layer
+        return authorRepository.save(authorEntity);// At this point, this is our persistence layer
     }
 
     @Override

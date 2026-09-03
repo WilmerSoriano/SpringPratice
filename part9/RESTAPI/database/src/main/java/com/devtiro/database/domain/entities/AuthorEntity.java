@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+// Our Entity should on;y exist in Service layer and Persistence layer
+// NO Presentation layer, hence we created a Data Transfer object (DTO)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
