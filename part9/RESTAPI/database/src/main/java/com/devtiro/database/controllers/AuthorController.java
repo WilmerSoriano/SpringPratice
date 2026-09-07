@@ -28,7 +28,7 @@ public class AuthorController {
     public ResponseEntity<AuthorDto> createAuthor(@RequestBody AuthorDto author) { // We changed this to AuthorDTO to prevent our Presenation layer from communicating with Persistance Layer
         AuthorEntity authorEntity = authorMapper.mapFrom(author); // So now are main entity has information from DTO instead of persistence layer
         AuthorEntity savedAuthorEntity = authorService.save(authorEntity);
-        return new ResponseEntity<>(authorMapper.mapTo(savedAuthorEntity), HttpStatus.CREATED); // Respond back to Http request
+        return new ResponseEntity<>(authorMapper.mapTo(savedAuthorEntity), HttpStatus.CREATED); // Once again convert Entity to DTO, and then Respond back to Http request 201 (created)
     }
 
     @GetMapping(path = "/authors") // HTTP GET
