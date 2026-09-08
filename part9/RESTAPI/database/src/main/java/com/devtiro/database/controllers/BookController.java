@@ -28,7 +28,7 @@ public class BookController {
         BookEntity bookEntity = bookMapper.mapFrom(bookDto);
         BookEntity savedBookEntity = bookService.createBook(isbn, bookEntity);
         BookDto savedUpdatedBookDto = bookMapper.mapTo(savedBookEntity);
-        return new ResponseEntity(savedUpdatedBookDto, HttpStatus.CREATED);
+        return new ResponseEntity(savedUpdatedBookDto, HttpStatus.CREATED);// HTTP 201
     }
 
     @GetMapping(path = "/books")
